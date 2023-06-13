@@ -1,5 +1,45 @@
 import React, { useState } from 'react';
 
+export default function AppDrawer() {
+  const [openMenu, setOpenMenu] = useState(false);
+
+  function toggleMenu() {
+    setOpenMenu(!openMenu);
+  }
+
+  function MenuIcon() {
+    return <i className="fa-solid fa-bars menu-bars" onClick={toggleMenu}></i>;
+  }
+
+  function DrawerComponent() {
+    return (
+      <>
+        <div className='background' onClick={toggleMenu}></div>
+        <div className='app-drawer'>
+          <div className='drawer-components'>
+            <h3>Choose a Game</h3>
+            <p onClick={toggleMenu}>The Legend of Zelda</p>
+            <p onClick={toggleMenu}>A Link to the Past</p>
+            <p onClick={toggleMenu}>Ocarina of Time</p>
+            <p onClick={toggleMenu}>The Wind Waker</p>
+            <p onClick={toggleMenu}>Breath of the Wild</p>
+          </div>
+        </div>
+      </>
+
+    );
+  }
+
+  return (
+    <>
+      {!openMenu && <MenuIcon />}
+      {openMenu && <DrawerComponent />}
+    </>
+
+  );
+
+}
+
 // export default function AppDrawer({ menuHeading, menuItems }) {
 //   const [isOpen, setIsOpen] = useState(false);
 
